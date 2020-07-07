@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "688ed77af4804152c94b";
+/******/ 	var hotCurrentHash = "0a9b2016dc0307a1be03";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -879,7 +879,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _gam
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return enemy; });\nclass enemy{\r\n    constructor(type, health){\r\n        this.type = type;\r\n        this.health = health;\r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/enemy.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return enemy; });\nclass enemy{\r\n    constructor(type, health){\r\n        this.type = type;\r\n        this.health = health;\r\n    }\r\n\r\n    receiveDamage(damage){\r\n        this.health =  this.health - damage;\r\n        return this.health;\r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/enemy.js?");
 
 /***/ }),
 
@@ -891,7 +891,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Game; });\n/* harmony import */ var _player__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./player */ \"./src/player.js\");\n/* harmony import */ var _enemy__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./enemy */ \"./src/enemy.js\");\n\r\n\r\n\r\nlet playerInstance = null;\r\nlet enemyInstance = null;\r\n\r\n\r\nclass Game{\r\n\r\n    initGame(playerName){\r\n        this.createEnemy();\r\n        //temp\r\n        playerName = 'Thexi';\r\n        this.createPlayer(playerName);\r\n        console.log('Game running');\r\n    }\r\n\r\n    createEnemy(){\r\n        let monsters = ['Goblin', 'Orc', 'Troll'];\r\n\r\n        let enemy = new _enemy__WEBPACK_IMPORTED_MODULE_1__[\"default\"](monsters[Math.floor(Math.random() * 2)], 25);\r\n        if (enemyInstance) return enemyInstance;\r\n        enemyInstance = enemy;\r\n        return enemyInstance;\r\n    }\r\n\r\n    createPlayer(name){\r\n        let player = new _player__WEBPACK_IMPORTED_MODULE_0__[\"default\"](name, 100, 100);\r\n        if (playerInstance) return playerInstance;\r\n        document.getElementById('name').innerHTML = player.name;\r\n        playerInstance = player;\r\n        return playerInstance;\r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/game.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Game; });\n/* harmony import */ var _player__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./player */ \"./src/player.js\");\n/* harmony import */ var _enemy__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./enemy */ \"./src/enemy.js\");\n\r\n\r\n\r\nlet playerInstance = null;\r\nlet enemyInstance = null;\r\n\r\n\r\nclass Game{\r\n\r\n    initGame(playerName){\r\n        this.createEnemy();\r\n        //temp\r\n        playerName = 'Thexi';\r\n        this.createPlayer(playerName);\r\n        console.log('Game running');\r\n        this.doDomageToEnemy();\r\n    }\r\n\r\n    createEnemy(){\r\n        let monsters = ['Goblin', 'Orc', 'Troll'];\r\n\r\n        let enemy = new _enemy__WEBPACK_IMPORTED_MODULE_1__[\"default\"](monsters[Math.floor(Math.random() * 2)], 25);\r\n        if (enemyInstance) return enemyInstance;\r\n        enemyInstance = enemy;\r\n        return enemyInstance;\r\n    }\r\n\r\n    createPlayer(name){\r\n        let player = new _player__WEBPACK_IMPORTED_MODULE_0__[\"default\"](name, 100, 100);\r\n        if (playerInstance) return playerInstance;\r\n        document.getElementById('name').innerHTML = player.name;\r\n        playerInstance = player;\r\n        return playerInstance;\r\n    }\r\n\r\n    doDomageToEnemy(){\r\n        let playerDamage = playerInstance.doDamgeToEnemy();\r\n        enemyInstance.receiveDamage(playerDamage);\r\n        console.log(enemyInstance);\r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/game.js?");
 
 /***/ }),
 
@@ -903,7 +903,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Player; });\nclass Player{\r\n    constructor(name, health, mana){\r\n        this.name = name;\r\n        this.health = health;\r\n        this.mana = mana;\r\n    }\r\n\r\n    getName(){\r\n        return this.name;\r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/player.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Player; });\nclass Player{\r\n    constructor(name, health, mana){\r\n        this.name = name;\r\n        this.health = health;\r\n        this.mana = mana;\r\n    }\r\n\r\n    doDamgeToEnemy(){\r\n        let damage = Math.floor(Math.random() * 20);\r\n        return damage;\r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/player.js?");
 
 /***/ })
 

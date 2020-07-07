@@ -31,4 +31,9 @@ export default class Game{
         playerInstance = player;
         return playerInstance;
     }
+
+    doDomageToEnemy(){
+        let playerDamage = playerInstance.doDamgeToEnemy();
+        enemyInstance.receiveDamage(playerDamage);
+    }
 }

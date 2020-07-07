@@ -5,7 +5,8 @@ export default class Player{
         this.mana = mana;
     }
 
-    getName(){
-        return this.name;
+    doDamgeToEnemy(){
+        let damage = Math.floor(Math.random() * 20);
+        return damage;
     }
 }

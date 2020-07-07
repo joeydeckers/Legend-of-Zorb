@@ -3,4 +3,9 @@ export default class enemy{
         this.type = type;
         this.health = health;
     }
+
+    receiveDamage(damage){
+        this.health =  this.health - damage;
+        return this.health;
+    }
 }
