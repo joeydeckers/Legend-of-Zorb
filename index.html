@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legend of Zorb</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
-    <h3 id="name">a</h3>
+    <div class="container">
+        <h3 id="name">a</h3>
+        <div class="progress">
+            <div class="progress-bar" id="playerhealth" role="progressbar" style="width: 25%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" id="enemyhealth" role="progressbar" style="width: 25%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <button class="btn btn-primary" id="attack">Attack</button>
+    </div>
+
     <script src="dist/js/bundle.js"></script>
 </body>
 </html>

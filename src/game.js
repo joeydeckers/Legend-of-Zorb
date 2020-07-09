@@ -12,13 +12,14 @@ export default class Game{
         //temp
         playerName = 'Thexi';
         this.createPlayer(playerName);
-        console.log('Game running');
+        document.getElementById('playerhealth').style.width = String(playerInstance.health)+'%';
+        document.getElementById('enemyhealth').style.width = String(enemyInstance.health)+'%';
     }
 
     createEnemy(){
         let monsters = ['Goblin', 'Orc', 'Troll'];
 
-        let enemy = new Enemy(monsters[Math.floor(Math.random() * 2)], 25);
+        let enemy = new Enemy(monsters[Math.floor(Math.random() * 2)], 100);
         if (enemyInstance) return enemyInstance;
         enemyInstance = enemy;
         return enemyInstance;
@@ -35,5 +36,19 @@ export default class Game{
     doDomageToEnemy(){
         let playerDamage = playerInstance.doDamgeToEnemy();
         enemyInstance.receiveDamage(playerDamage);
+        if(playerInstance.health <= 0){
+            console.log("Player dead!");
+        }else{
+            this.doDomageToPlayer();
+        }
+    }
+
+    doDomageToPlayer(){
+        let enemyDamage = enemyInstance.doDamgeToPlayer();
+        if(playerInstance.health <= 0){
+            console.log("Player dead!");
+        }
+        playerInstance.receiveDamage(enemyDamage);
+        console.log('Damage done!');
     }
 }

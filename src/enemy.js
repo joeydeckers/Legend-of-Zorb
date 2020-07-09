@@ -8,4 +8,9 @@ export default class enemy{
         this.health =  this.health - damage;
         return this.health;
     }
+
+    doDamgeToPlayer(){
+        let damage = Math.floor(Math.random() * 20);
+        return damage;
+    }
 }

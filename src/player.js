@@ -9,4 +9,9 @@ export default class Player{
         let damage = Math.floor(Math.random() * 20);
         return damage;
     }
+
+    receiveDamage(damage){
+        this.health =  this.health - damage;
+        return this.health;
+    }
 }
